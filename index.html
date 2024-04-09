@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Contador ou relogio</title>
+</head>
+<style>
+     *{
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+     }
+     body{
+          background-image: linear-gradient(rgb(161, 118, 184),rgb(251, 222, 255));
+          background-repeat: no-repeat;
+          height: 150vh;
+     }
+     h1{
+          margin-top: 5%;
+          text-transform: capitalize;
+          text-align: center;
+          color: white;
+          text-shadow: 1px 1px rgb(95, 1, 163);
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     }
+     table{
+          height: 20vh;
+          width: 40vh;
+     }
+     table th,td{
+         border: 3px solid rgb(95, 1, 163);
+         padding: 2%;
+     }
+     table th{
+          color: white;
+          font-size: larger;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     }
+     td{
+          text-align: center;
+          text-transform: capitalize;
+     }
+     button{
+          height: 5vh;
+          width: 8vh;
+          margin: 2%;
+          padding: 0 5%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          border: 3px rgb(95, 1, 163) solid;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          text-transform: capitalize;
+          font-size: larger;
+          transition: 800ms;
+          cursor: pointer;
+     }
+     button:hover{
+          background-color: rgb(95, 1, 163);
+          color: white;
+          border: 1px white solid;
+     }
+     .center{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: 5%;
+     }
+</style>
+<body>
+     <h1>Relogio manual em JS</h1>
+     <div class="center">
+          <table>
+               <tr>
+                    <th>Horas</th>
+                    <th>Minutos</th>
+                    <th>Segundos</th>
+               </tr>
+               <tr>
+                    <td id="horasTxt">Valor da segunda linha</td>
+                    <td id="minTxt">valor da segunda linha</td>
+                    <td id="segTxt">valor da segunda linha</td>
+               </tr>
+          </table>
+          <button onclick="relogio()">iniciar</button>
+          <label for="text">Insira um valor para começar as horas</label>
+          <input type="text" name="" id="inpTxt">
+          <input type="submit" value="enviar" onclick="enviar()">
+     </div>
+</body>
+<script>
+     var inp = document.getElementById('inpTxt');
+     var hora = document.getElementById('horasTxt');
+     var min = document.getElementById('minTxt');
+     var seg = document.getElementById('segTxt');
+     var valor1 = 0;
+     var valor2 = 0;
+     var valor3 = 0;
+     
+     function enviar(){
+          valor3 = inp.value;
+          mostrar();
+     }
+     
+     function horas(){
+          valor1++;
+          mostrar();
+          if(valor1 == 60){
+               valor1 = 0;
+               valor2++;
+               if(valor2 == 60){
+                    valor3++;
+                    valor2 = 0;
+               }if(valor3 = 24){
+                    valor3 = 0;
+               }
+          }
+     }
+     function relogio(){
+          
+          window.setInterval(horas,2);
+     }
+     function mostrar(){
+          hora.innerHTML = valor3;
+          min.innerHTML = valor2;
+          seg.innerHTML = valor1;
+     }
+     mostrar();
+</script>
+</html>
